@@ -34,18 +34,18 @@ Before running this project, ensure you have the following installed:
 
 1. Clone the repository:
 
-   ```bash
+  ```bash
    git clone https://github.com/gouravSahu3212/ShopIT.git
    cd ShopIT
 
    virtualenv venv
-  source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-  pip install -r requirements.txt
+   pip install -r requirements.txt
 
 
-  python manage.py makemigrations
-  python manage.py migrate
+   python manage.py makemigrations
+   python manage.py migrate
 
-  python manage.py runserver
+   python manage.py runserver
   ```
