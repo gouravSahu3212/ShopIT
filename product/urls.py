@@ -1,12 +1,8 @@
-from django.urls import path, include
-from django.contrib.auth.models import User
-from rest_framework import routers
+from django.urls import path
 
+from . import views
 
-# Routers provide an easy way of automatically determining the URL conf.
-router = routers.DefaultRouter()
-
-# Wire up our API using automatic URL routing.
 urlpatterns = [
-    path('', include(router.urls)),
+    path('products/', views.ProductList.as_view(), name='product-list'),
+    path('products/<int:pk>/', views.ProductDetail.as_view(), name='product-detail'),
 ]
