@@ -49,3 +49,9 @@ Before running this project, ensure you have the following installed:
 
    python manage.py runserver
   ```
+
+## USAGE
+
+### API Endpoints
+
+1. '/swagger'
