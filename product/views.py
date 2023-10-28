@@ -1,3 +1,5 @@
+from django.core.cache import cache
+from django.views.decorators.cache import cache_page
 from rest_framework import generics
 
 from .models import Product
@@ -12,6 +14,10 @@ class ProductList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+    @cache_page(60 * 60 * 1)  # Cache the response for 1 hour
+    def get(self, request, format=None):
+        return self.list(request)
+
 
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -21,3 +27,7 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+    @cache_page(60 * 60 * 1)  # Cache the response for 1 hour
+    def get(self, request, format=None):
+        return self.list(request)
