@@ -18,9 +18,28 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path, include
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
+# Schema for swagger-ui
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Shop-IT",
+        default_version='v1',
+        description="CRUD API for products of an ECommerce shopping website.",
+        terms_of_service="https://www.example.com/terms/",
+        contact=openapi.Contact(email="gouravsahu3213@gmail.com"),
+        license=openapi.License(name="GNU"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
     path("api/", include("product.urls")),
     path('admin/', admin.site.urls),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
