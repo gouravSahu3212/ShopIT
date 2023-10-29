@@ -16,7 +16,7 @@ staticfiles/
 *.env
 
 # Site-specific settings
-settings.py
+# settings.py
 
 # IDE-specific files
 .vscode/
